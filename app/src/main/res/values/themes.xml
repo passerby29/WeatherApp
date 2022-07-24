@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WeatherApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@android:color/transparent</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="divider">
+        <item name="android:background">@color/main_grey</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="TVStyle">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/main_grey</item>
+    </style>
+
+    <style name="iconsStyle">
+        <item name="color">@color/main_grey</item>
+    </style>
+
+    <style name="iconButton" parent="Widget.MaterialComponents.Button.Icon">
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconSize">25dp</item>
+    </style>
+</resources>
