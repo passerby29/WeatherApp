@@ -19,7 +19,7 @@
             style="@style/TVStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="19:00"
+            tools:text="19:00"
             android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -30,7 +30,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:includeFontPadding="false"
-            android:text="20\u00b0"
+            tools:text="20\u00b0"
             android:textSize="22sp" />
 
         <LinearLayout
@@ -44,7 +44,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginEnd="4dp"
-                android:src="@drawable/ic_sun_icon" />
+                tools:src="@drawable/ic_sun_icon" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/item_hourly_pop_tv"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="25%"
+                tools:text="25%"
                 android:textSize="18sp" />
         </LinearLayout>
 
