@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45" />
+            app:layout_constraintGuide_percent="0.4" />
 
         <ImageView
             android:id="@+id/weather_image_main"
@@ -94,6 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/weather_image_add"
             app:layout_constraintEnd_toStartOf="@+id/weather_image_main"
             app:layout_constraintStart_toEndOf="@+id/weather_image_add"
