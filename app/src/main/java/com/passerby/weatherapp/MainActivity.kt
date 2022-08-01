@@ -20,9 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 
-const val GEO_LOCATION_REQUEST_CODE_SUCCESS = 1
 const val TAG = "GEO_TEST"
-
 class MainActivity : MvpAppCompatActivity(), MainView {
 
     private val mainPresenter by moxyPresenter { MainPresenter() }
@@ -34,7 +32,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        checkPermission()
         initView()
 
         main_hourly_list.apply {
@@ -109,45 +106,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
                 mainPresenter.refresh(mLocation.latitude.toString(), mLocation.longitude.toString())
                 Log.d(TAG, "onLocationResult: lat: ${location.latitude}; ${location.longitude}")
             }
-        }
-    }
-
-    //------initial activity code
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        Log.d(TAG, "onRequestPermissionsResult: $requestCode")
-    }
-
-    private fun checkPermission() {
-        if (ActivityCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle("We need geo data")
-                .setMessage("Allow user your geo data, pwease")
-                .setPositiveButton("OK") { _, _ ->
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                        GEO_LOCATION_REQUEST_CODE_SUCCESS
-                    )
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
-                        GEO_LOCATION_REQUEST_CODE_SUCCESS
-                    )
-                }
-                .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
-                .create()
-                .show()
         }
     }
 

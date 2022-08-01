@@ -57,6 +57,4 @@ dependencies {
     implementation 'com.github.moxy-community:moxy-androidx:2.2.2'
     implementation 'com.github.moxy-community:moxy-material:2.2.2'
     implementation 'com.github.moxy-community:moxy-ktx:2.2.2'
-    implementation 'com.github.moxy-community:moxy-app-compat:2.2.2'
-
 }
