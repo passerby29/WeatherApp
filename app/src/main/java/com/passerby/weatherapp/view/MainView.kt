@@ -1,8 +1,9 @@
 package com.passerby.weatherapp.view
 
+import com.passerby.weatherapp.business.model.Current
 import com.passerby.weatherapp.business.model.DailyWeatherModel
 import com.passerby.weatherapp.business.model.HourlyWeatherModel
-import com.passerby.weatherapp.business.model.WeatherData
+import com.passerby.weatherapp.business.model.Weather
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 
@@ -12,7 +13,7 @@ interface MainView : MvpView {
     fun displayLocation(data: String)
 
     @AddToEndSingle
-    fun displayCurrentData(data: WeatherData)
+    fun displayCurrentData(data: Current)
 
     @AddToEndSingle
     fun displayHourlyData(data: List<HourlyWeatherModel>)

@@ -1,17 +1,12 @@
 package com.passerby.weatherapp
 
-import android.Manifest
-import android.content.pm.PackageManager
+import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.*
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.passerby.weatherapp.business.model.DailyWeatherModel
-import com.passerby.weatherapp.business.model.HourlyWeatherModel
-import com.passerby.weatherapp.business.model.WeatherData
+import com.passerby.weatherapp.business.model.*
 import com.passerby.weatherapp.presenters.MainPresenter
 import com.passerby.weatherapp.view.MainView
 import com.passerby.weatherapp.view.adapters.MainDailyListAdapter
@@ -29,6 +24,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     private val locationRequest by lazy { initLocationRequest() }
     private lateinit var mLocation: Location
 
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,7 +60,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         city_textview.text = data
     }
 
-    override fun displayCurrentData(data: WeatherData) {
+    override fun displayCurrentData(data: Current) {
         city_textview.text = "Simferopol"
         date_textview.text = "24 july"
         weather_image_add.setImageResource(R.drawable.ic_sun_icon)
