@@ -14,5 +14,7 @@ class ApiProvider {
         .baseUrl("https://api.openweathermap.org/")
         .build()
 
-    fun provideWeatherApi() = openWeatherMap.create(WeatherApi::class.java)
+    fun provideWeatherApi(): WeatherApi = openWeatherMap.create(WeatherApi::class.java)
+
+    fun provideGeoCodeApi(): GeoCodingApi = openWeatherMap.create(GeoCodingApi::class.java)
 }

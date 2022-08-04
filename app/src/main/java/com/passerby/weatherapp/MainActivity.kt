@@ -60,7 +60,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         city_textview.text = data
     }
 
-    override fun displayCurrentData(data: Current) {
+    override fun displayCurrentData(data: WeatherDataModel) {
         city_textview.text = "Simferopol"
         date_textview.text = "24 july"
         weather_image_add.setImageResource(R.drawable.ic_sun_icon)
