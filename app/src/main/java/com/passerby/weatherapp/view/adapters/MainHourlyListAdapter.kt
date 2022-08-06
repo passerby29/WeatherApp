@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.android.material.textview.MaterialTextView
 import com.passerby.weatherapp.R
 import com.passerby.weatherapp.business.model.HourlyWeatherModel
+import com.passerby.weatherapp.view.*
 
 const val TAG = "RV_TEST"
 
@@ -43,12 +43,12 @@ class MainHourlyListAdapter : BaseAdapter<HourlyWeatherModel>() {
         }
 
         override fun bindView(position: Int) {
-            time.text = "14:00"
-            temperature.text = "14\u00b0"
-            popRate.text = "100%"
-            icon.setImageResource(R.drawable.ic_sun_icon)
-            if (position == 3) {
-                time.setTextColor(ContextCompat.getColor(time.context, R.color.purple_500))
+            mData[position].apply{
+                time.text = dt.toDateFormatOf(HOUR_DOUBLE_DOT_MINUTE)
+                temperature.text =
+                    StringBuilder().append(temp.toDegree()).append("\u00b0").toString()
+                popRate.text = pop.toPercentString(" %")
+                icon.setImageResource(weather[0].icon.provideIcon())
             }
         }
     }

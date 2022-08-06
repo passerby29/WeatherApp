@@ -13,7 +13,7 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>
         holder.bindView(position)
     }
 
-    override fun getItemCount() = 30//_mData.size
+    override fun getItemCount() = _mData.size
 
     fun updateData(data: List<D>){
         if (_mData.isEmpty() && (data.isNotEmpty())){

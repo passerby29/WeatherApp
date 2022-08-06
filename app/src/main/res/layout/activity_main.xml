@@ -93,8 +93,8 @@
             style="@style/TVStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:layout_marginStart="8dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/weather_image_add"
             app:layout_constraintEnd_toStartOf="@+id/weather_image_main"
             app:layout_constraintStart_toEndOf="@+id/weather_image_add"
@@ -140,6 +140,7 @@
                     android:textSize="12sp" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/main_temp_min_tv"
                     style="@style/TVStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,39 +169,12 @@
                     android:textSize="12sp" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/main_temp_max_tv"
                     style="@style/TVStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     tools:text="35\u00b0" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/divider"
-                android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity=""
-                android:orientation="vertical">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TVStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:includeFontPadding="false"
-                    android:text="@string/mid"
-                    android:textSize="12sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TVStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    tools:text="30\u00b0" />
             </LinearLayout>
         </LinearLayout>
 
@@ -247,6 +221,7 @@
                         android:src="@drawable/ic_term_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_pressure_tv"
                         style="@style/TVStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -269,6 +244,7 @@
                         android:src="@drawable/ic_drop_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_humidity_tv"
                         style="@style/TVStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -290,6 +266,7 @@
                         android:src="@drawable/ic_wind_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_wind_speed_tv"
                         style="@style/TVStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -319,6 +296,7 @@
                         android:src="@drawable/ic_sunrise_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_sunrise_tv"
                         style="@style/TVStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -340,6 +318,7 @@
                         android:src="@drawable/ic_sunset_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_sunset_tv"
                         style="@style/TVStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
