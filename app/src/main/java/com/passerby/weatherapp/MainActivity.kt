@@ -12,7 +12,6 @@ import com.passerby.weatherapp.view.*
 import com.passerby.weatherapp.view.adapters.MainDailyListAdapter
 import com.passerby.weatherapp.view.adapters.MainHourlyListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_main_daily.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import java.lang.StringBuilder

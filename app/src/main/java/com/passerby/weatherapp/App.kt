@@ -2,14 +2,24 @@ package com.passerby.weatherapp
 
 import android.app.Application
 import android.content.Intent
+import androidx.room.Room
+import com.passerby.weatherapp.business.room.OpenWeatherDB
 
 const val APP_SETTINGS = "App settings"
 const val IS_STARTED_UP = "Is started up"
 
 class App : Application() {
 
+    companion object {
+        lateinit var db: OpenWeatherDB
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        db = Room.databaseBuilder(this, OpenWeatherDB::class.java, "OpenWeatherDB")
+            .fallbackToDestructiveMigration()
+            .build()
 
         val prefs = getSharedPreferences(APP_SETTINGS, MODE_PRIVATE)
 
