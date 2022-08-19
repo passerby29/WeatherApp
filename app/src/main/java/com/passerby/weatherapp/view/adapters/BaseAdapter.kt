@@ -15,8 +15,8 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>
 
     override fun getItemCount() = _mData.size
 
-    fun updateData(data: List<D>){
-        if (_mData.isEmpty() && (data.isNotEmpty())){
+    fun updateData(data: List<D>) {
+        if (_mData.isEmpty() && (data.isNotEmpty())) {
             _mData.addAll(data)
         } else {
             _mData.clear()
@@ -26,6 +26,6 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>
     }
 
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-abstract fun bindView(position: Int)
+        abstract fun bindView(position: Int)
     }
 }

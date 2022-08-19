@@ -1,6 +1,12 @@
 package com.passerby.weatherapp.view
 
+import android.text.Editable
+import android.text.TextWatcher
+import com.google.android.material.textfield.TextInputEditText
 import com.passerby.weatherapp.R
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.core.Flowable
+import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -46,4 +52,28 @@ fun String.provideMainIcon() = when (this) {
     "13n", "13d" -> R.mipmap.big_13d_1x
     "50n", "50d" -> R.mipmap.big_50d_1x
     else -> R.drawable.ic_error
+}
+
+fun TextInputEditText.createObservable(): Flowable<String> {
+    return Flowable.create({
+        addTextChangedListener(object : SimpleTextWatcher() {
+            override fun afterTextChanged(s: Editable?) {
+                it.onNext(s.toString())
+            }
+        })
+    }, BackpressureStrategy.BUFFER)
+}
+
+private abstract class SimpleTextWatcher : TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+
+    }
 }

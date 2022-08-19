@@ -1,7 +1,6 @@
 package com.passerby.weatherapp.business.model
 
 data class WeatherDataModel(
-    val alerts: List<Alert>,
     val current: Current,
     val daily: List<DailyWeatherModel>,
     val hourly: List<HourlyWeatherModel>,

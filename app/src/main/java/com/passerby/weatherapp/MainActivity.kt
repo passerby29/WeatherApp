@@ -1,12 +1,14 @@
 package com.passerby.weatherapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.*
 import com.passerby.weatherapp.business.model.*
+import com.passerby.weatherapp.presenters.CitySearchPresenter
 import com.passerby.weatherapp.presenters.MainPresenter
 import com.passerby.weatherapp.view.*
 import com.passerby.weatherapp.view.adapters.MainDailyListAdapter
@@ -32,6 +34,27 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         initView()
 
+        if (!intent.hasExtra(COORDINATE)) {
+            geoService.requestLocationUpdates(locationRequest, geoCallBack, null)
+        } else {
+
+            val coord = intent.extras!!.getBundle(COORDINATE)!!
+            val loc = Location("")
+            loc.latitude = coord.getString("lat")!!.toDouble()
+            loc.longitude = coord.getString("lon")!!.toDouble()
+            mLocation = loc
+            mainPresenter.refresh(
+                lat = mLocation.latitude.toString(),
+                lon = mLocation.longitude.toString()
+            )
+        }
+
+        menu_btn_main.setOnClickListener {
+            val intent = Intent(this, CitySearchActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, android.R.anim.fade_out)
+        }
+
         main_hourly_list.apply {
             adapter = MainHourlyListAdapter()
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -46,7 +69,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
         mainPresenter.enable()
 
-        geoService.requestLocationUpdates(locationRequest, geoCallBack, null)
     }
 
     private fun initView() {
