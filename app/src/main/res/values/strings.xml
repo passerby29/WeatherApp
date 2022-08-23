@@ -6,4 +6,15 @@
     <string name="location_hint">Location</string>
     <string name="city_name">City name</string>
     <string name="comma">, %1$s</string>
+    <string name="provided_by">Provided by</string>
+    <string name="provider_description">All data provided by \nOpen Weather Map</string>
+    <string name="temperature">Temperature</string>
+    <string name="c">\u2103</string>
+    <string name="f">\u2109</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="m_s">m/s</string>
+    <string name="km_h">km/h</string>
+    <string name="pressure">Pressure</string>
+    <string name="hpa">hPa</string>
+    <string name="mmhg">mmHg</string>
 </resources>

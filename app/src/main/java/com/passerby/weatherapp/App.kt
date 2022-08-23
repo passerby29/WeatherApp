@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Intent
 import androidx.room.Room
 import com.passerby.weatherapp.business.room.OpenWeatherDB
+import com.passerby.weatherapp.view.SettingsHolder
 
 const val APP_SETTINGS = "App settings"
 const val IS_STARTED_UP = "Is started up"
@@ -22,6 +23,8 @@ class App : Application() {
             .build()
 
         val prefs = getSharedPreferences(APP_SETTINGS, MODE_PRIVATE)
+
+        SettingsHolder.onCreate(prefs)
 
         val flag = prefs.contains(IS_STARTED_UP)
 

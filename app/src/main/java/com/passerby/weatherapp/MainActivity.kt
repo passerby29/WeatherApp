@@ -55,6 +55,12 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             overridePendingTransition(R.anim.slide_in_left, android.R.anim.fade_out)
         }
 
+        settings_btn_main.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, android.R.anim.fade_out)
+        }
+
         main_hourly_list.apply {
             adapter = MainHourlyListAdapter()
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

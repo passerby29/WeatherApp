@@ -48,7 +48,6 @@ class CitySearchActivity : MvpAppCompatActivity(), CitySearchView {
         super.onBackPressed()
         overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left)
     }
-
     //-------------------------------- ^ CitySearchActivity ^ --------------------------------
 
 
