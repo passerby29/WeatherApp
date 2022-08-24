@@ -1,7 +1,6 @@
 package com.passerby.weatherapp.business.room
 
 import androidx.room.*
-import com.passerby.weatherapp.business.model.GeoCodeModel
 
 @Dao
 interface GeoCodeDao {

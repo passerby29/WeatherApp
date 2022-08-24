@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">retrofit2</string>
+    <string name="min">мин</string>
+    <string name="max">макс</string>
+    <string name="mid">сред</string>
+    <string name="location_hint">Местоположение</string>
+    <string name="city_name">Название города</string>
+    <string name="temperature">Температура</string>
+    <string name="pressure">Давление</string>
+    <string name="wind_speed">Скорость ветра</string>
+    <string name="wind_speed_mu_ms">%1$s м/с</string>
+    <string name="wind_speed_mu_kmh">%1$s км/ч</string>
+    <string name="pressure_mu_hpa">%1$s гПа</string>
+    <string name="pressure_mu_mmhg">%1$s мм рт.ст.</string>
+    <string name="m_s">м/с</string>
+    <string name="km_h">км/ч</string>
+    <string name="hpa">гПа</string>
+    <string name="mmhg">мм рт.ст</string>
+</resources>

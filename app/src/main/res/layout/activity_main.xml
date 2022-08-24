@@ -83,12 +83,19 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.1" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
         <ImageView
             android:id="@+id/weather_image_add"
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:layout_constraintBottom_toTopOf="@+id/main_temp"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
             tools:src="@drawable/ic_sun_icon" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -224,11 +231,12 @@
                         android:src="@drawable/ic_term_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/main_pressure_tv"
-                        style="@style/TVStyle"
+                        android:id="@+id/main_pressure_mu_tv"
+                        style="@style/AdditionalWeatherInformationStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center"
                         android:textSize="16sp"
                         tools:text="1,5 hPa" />
                 </LinearLayout>
@@ -269,11 +277,12 @@
                         android:src="@drawable/ic_wind_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/main_wind_speed_tv"
-                        style="@style/TVStyle"
+                        android:id="@+id/main_wind_speed_mu_tv"
+                        style="@style/AdditionalWeatherInformationStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center"
                         android:textSize="16sp"
                         tools:text="5 m/s" />
                 </LinearLayout>

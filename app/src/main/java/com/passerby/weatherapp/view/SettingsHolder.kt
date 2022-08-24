@@ -63,19 +63,19 @@ object SettingsHolder {
             override fun getValue(initValue: Double) =
                 valueToString { (initValue - 273.15) }
         },
-        WIND_SPEED_MS(R.id.m_s, R.string.m_s, MS) {
+        WIND_SPEED_MS(R.id.m_s, R.string.wind_speed_mu_ms, MS) {
             override fun getValue(initValue: Double) =
                 valueToString { (initValue) }
         },
-        WIND_SPEED_KMH(R.id.km_h, R.string.km_h, KMH) {
+        WIND_SPEED_KMH(R.id.km_h, R.string.wind_speed_mu_kmh, KMH) {
             override fun getValue(initValue: Double) =
                 valueToString { (initValue * 3.6) }
         },
-        PRESSURE_MMHG(R.id.mm_hg, R.string.mmhg, MM_HG) {
+        PRESSURE_MMHG(R.id.mm_hg, R.string.pressure_mu_mmhg, MM_HG) {
             override fun getValue(initValue: Double) =
                 valueToString { (initValue / 1.33322387415) }
         },
-        PRESSURE_HPA(R.id.h_pa, R.string.hpa, HPA) {
+        PRESSURE_HPA(R.id.h_pa, R.string.pressure_mu_hpa, HPA) {
             override fun getValue(initValue: Double) =
                 valueToString { (initValue) }
         };

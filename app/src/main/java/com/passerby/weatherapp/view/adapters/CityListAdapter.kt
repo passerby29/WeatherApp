@@ -11,6 +11,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 import com.passerby.weatherapp.R
 import com.passerby.weatherapp.business.model.GeoCodeModel
+import java.util.*
 
 class CityListAdapter : BaseAdapter<GeoCodeModel>() {
 
@@ -25,6 +26,7 @@ class CityListAdapter : BaseAdapter<GeoCodeModel>() {
     }
 
     interface SearchItemClickListener {
+
         fun addToFavorite(item: GeoCodeModel)
 
         fun removeFromFavorite(item: GeoCodeModel)
@@ -78,11 +80,14 @@ class CityListAdapter : BaseAdapter<GeoCodeModel>() {
                     R.string.comma,
                     state
                 ) else ""
-                mCity.text = local_names.en
-                mCountry.text = country
+                mCity.text = when (Locale.getDefault().displayLanguage) {
+                    "русский" -> local_names.ru ?: name
+                    "English" -> local_names.en ?: name
+                    else -> name
+                }
+                mCountry.text = Locale("", country).displayName
                 mFavorite.isChecked = isFavorite
             }
         }
-
     }
 }

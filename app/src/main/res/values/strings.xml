@@ -5,16 +5,21 @@
     <string name="mid">avg</string>
     <string name="location_hint">Location</string>
     <string name="city_name">City name</string>
-    <string name="comma">, %1$s</string>
-    <string name="provided_by">Provided by</string>
-    <string name="provider_description">All data provided by \nOpen Weather Map</string>
+    <string name="provided_by" translatable="false">Provided by</string>
+    <string name="provider_description" translatable="false">All data provided by \nOpen Weather Map</string>
     <string name="temperature">Temperature</string>
-    <string name="c">\u2103</string>
-    <string name="f">\u2109</string>
+    <string name="pressure">Pressure</string>
     <string name="wind_speed">Wind speed</string>
+    <string name="comma" translatable="false">, %1$s</string>
+    <string name="wind_speed_mu_ms">%1$s m/s</string>
+    <string name="wind_speed_mu_kmh">%1$s km/h</string>
+    <string name="pressure_mu_hpa">%1$s hPa</string>
+    <string name="pressure_mu_mmhg">%1$s mmHg</string>
+
+    <string name="c" translatable="false">\u2103</string>
+    <string name="f" translatable="false">\u2109</string>
     <string name="m_s">m/s</string>
     <string name="km_h">km/h</string>
-    <string name="pressure">Pressure</string>
     <string name="hpa">hPa</string>
     <string name="mmhg">mmHg</string>
 </resources>

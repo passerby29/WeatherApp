@@ -1,7 +1,6 @@
 package com.passerby.weatherapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +15,6 @@ import kotlinx.android.synthetic.main.activity_city_search.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import java.util.concurrent.TimeUnit
-
-const val COORDINATE = "coordinates"
 
 class CitySearchActivity : MvpAppCompatActivity(), CitySearchView {
 
@@ -35,12 +32,10 @@ class CitySearchActivity : MvpAppCompatActivity(), CitySearchView {
 
         search_field.createObservable()
             .doOnNext { setLoading(true) }
-            .debounce(700, TimeUnit.MILLISECONDS)
+            .debounce(1000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                if (!it.isNullOrEmpty()) {
-                    presenter.searchFor(it)
-                }
+                if (!it.isNullOrEmpty()) presenter.searchFor(it)
             }
     }
 
@@ -94,9 +89,9 @@ class CitySearchActivity : MvpAppCompatActivity(), CitySearchView {
         override fun showWeatherIn(item: GeoCodeModel) {
             val intent = Intent(this@CitySearchActivity, MainActivity::class.java)
             val bundle = Bundle()
-            bundle.putString("lat", item.lat.toString())
-            bundle.putString("lon", item.lon.toString())
-            intent.putExtra(COORDINATE, bundle)
+            bundle.putString("lat",item.lat.toString())
+            bundle.putString("lon",item.lon.toString())
+            intent.putExtra(COORDINATES,bundle)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left)
         }

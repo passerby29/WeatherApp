@@ -11,27 +11,28 @@ class CitySearchPresenter : BasePresenter<CitySearchView>() {
     private val repo = CitySearchRepository(ApiProvider())
 
     override fun enable() {
-        repo.dataEmitter.subscribe {
+        repo.dataEmitter.subscribe{
             viewState.setLoading(false)
-            if (it.purpose == SAVED) {
-                Log.d("123123", "enable: SAVED ${it.data}")
+            if(it.purpose == SAVED){
+                Log.d("123321", "enable: SAVED ${it.data}")
                 viewState.fillFavoriteList(it.data)
-            } else {
-                Log.d("123123", "enable: CURRENT ${it.data}")
+            }else{
+                Log.d("123321", "enable: CURRENT ${it.data}")
+
                 viewState.fillPredictionsList(it.data)
             }
         }
     }
 
-    fun searchFor(str: String) {
+    fun searchFor(str: String){
         repo.getCities(str)
     }
 
-    fun removeLocation(data: GeoCodeModel) {
+    fun removeLocation(data: GeoCodeModel){
         repo.remove(data)
     }
 
-    fun saveLocation(data: GeoCodeModel) {
+    fun saveLocation(data: GeoCodeModel){
         repo.add(data)
     }
 

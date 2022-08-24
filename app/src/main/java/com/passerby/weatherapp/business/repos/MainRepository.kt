@@ -8,19 +8,29 @@ import com.passerby.weatherapp.business.room.WeatherDataEntity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.*
 
 const val TAG = "MAIN_REPO"
 
 class MainRepository(api: ApiProvider) : BaseRepository<MainRepository.ServerResponse>(api) {
     private val gson = Gson()
     private val dbAccess = db.getWeatherDao()
-
+    private val defLanguage = when (Locale.getDefault().displayLanguage) {
+        "русский" -> "ru"
+        else -> "en"
+    }
 
     fun reloadData(lat: String, lon: String) {
         Observable.zip(
-            api.provideWeatherApi().getWeatherForecast(lat, lon),
+            api.provideWeatherApi().getWeatherForecast(lat, lon, lang = defLanguage),
             api.provideGeoCodeApi().getCityByCoordinates(lat, lon).map {
-                it.asSequence().map { model -> model.name }
+                it.asSequence().map { model ->
+                    when (Locale.getDefault().displayLanguage) {
+                        "русский" -> model.local_names.ru
+                        "English" -> model.local_names.en
+                        else -> model.name
+                    }
+                }
                     .toList()
                     .filterNotNull()
                     .first()
