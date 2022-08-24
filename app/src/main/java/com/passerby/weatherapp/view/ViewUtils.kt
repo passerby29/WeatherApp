@@ -42,7 +42,7 @@ fun String.provideIcon() = when (this) {
 }
 
 fun String.provideMainIcon() = when (this) {
-    "01n", "01d" -> R.mipmap.big_01d_1x
+    "01n", "01d" -> R.mipmap.sun_main1x
     "02n", "02d" -> R.mipmap.big_02d_1x
     "03n", "03d" -> R.mipmap.big_03d_1x
     "04n", "04d" -> R.mipmap.big_04d_1x

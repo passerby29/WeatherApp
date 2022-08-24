@@ -2,20 +2,23 @@ package com.passerby.weatherapp
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Point
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.*
-import com.passerby.weatherapp.business.model.*
-import com.passerby.weatherapp.presenters.*
+import com.passerby.weatherapp.business.model.DailyWeatherModel
+import com.passerby.weatherapp.business.model.HourlyWeatherModel
+import com.passerby.weatherapp.business.model.WeatherDataModel
+import com.passerby.weatherapp.presenters.MainPresenter
 import com.passerby.weatherapp.view.*
-import com.passerby.weatherapp.view.adapters.MainDailyListAdapter
 import com.passerby.weatherapp.view.adapters.MainHourlyListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import java.lang.StringBuilder
+import kotlin.math.roundToInt
 
 const val TAG = "GEO_TEST"
 const val COORDINATES = "Coordinates"
@@ -32,6 +35,14 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
+        initBottomSheets()
+        initSwipeRefresh()
+
+        refresh.isRefreshing = true
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, DailyListFragment(), DailyListFragment::class.simpleName)
+            .commit()
 
         menu_btn_main.setOnClickListener {
             val intent = Intent(this, CitySearchActivity::class.java)
@@ -67,13 +78,10 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
         main_hourly_list.apply {
             adapter = MainHourlyListAdapter()
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
-        }
-
-        main_daily_list.apply {
-            adapter = MainDailyListAdapter()
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(
+                context, LinearLayoutManager.HORIZONTAL,
+                false
+            )
             setHasFixedSize(true)
         }
 
@@ -86,6 +94,28 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         weather_image_add.setImageResource(R.drawable.ic_sun_icon)
         weather_state_tv.text = "sunny"
         weather_image_main.setImageResource(R.mipmap.sun_main1x)
+    }
+
+    private fun initBottomSheets() {
+        main_bottom_sheet.isNestedScrollingEnabled = true
+        val size = Point()
+        windowManager.defaultDisplay.getSize(size)
+        bottom_sheet_container.layoutParams =
+            CoordinatorLayout.LayoutParams(size.x, (size.y * 0.55).roundToInt())
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun initSwipeRefresh() {
+        refresh.apply {
+            setColorSchemeColors(R.color.purple_700)
+            setProgressViewEndTarget(false, 250)
+            setOnRefreshListener {
+                mainPresenter.refresh(
+                    mLocation.latitude.toString(),
+                    mLocation.longitude.toString()
+                )
+            }
+        }
     }
 
     //-----------------moxy code-----------------
@@ -129,13 +159,15 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     }
 
     override fun displayDailyData(data: List<DailyWeatherModel>) {
-        (main_daily_list.adapter as MainDailyListAdapter).updateData(data)
+        (supportFragmentManager.findFragmentByTag(DailyListFragment::class.simpleName) as
+                DailyListFragment).setData(data)
     }
 
     override fun displayError(error: Throwable) {
     }
 
     override fun setLoading(flag: Boolean) {
+        refresh.isRefreshing = flag
     }
     //-----------------moxy code-----------------
 

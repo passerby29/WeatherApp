@@ -15,6 +15,15 @@
     <string name="wind_speed_mu_kmh">%1$s km/h</string>
     <string name="pressure_mu_hpa">%1$s hPa</string>
     <string name="pressure_mu_mmhg">%1$s mmHg</string>
+    <string name="feels_like">Feels like</string>
+    <string name="morn">morn</string>
+    <string name="day">day</string>
+    <string name="eve">eve</string>
+    <string name="night">night</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind_dir">Wind diraction</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
 
     <string name="c" translatable="false">\u2103</string>
     <string name="f" translatable="false">\u2109</string>
@@ -22,4 +31,5 @@
     <string name="km_h">km/h</string>
     <string name="hpa">hPa</string>
     <string name="mmhg">mmHg</string>
+    <string name="degree_symbol" translatable="false">%1$s\u00B0</string>
 </resources>

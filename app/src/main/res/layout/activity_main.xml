@@ -11,6 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/menu_btn_main"
             style="@style/iconButton"
@@ -72,6 +87,8 @@
             android:id="@+id/weather_image_main"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             tools:src="@mipmap/sun_main4x" />
@@ -384,12 +401,10 @@
                 android:layout_marginBottom="4dp"
                 android:background="@color/main_grey" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_daily_list"
+            <FrameLayout
+                android:id="@+id/fragmentContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                tools:layout_height="16dp" />
+                android:layout_height="match_parent" />
         </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

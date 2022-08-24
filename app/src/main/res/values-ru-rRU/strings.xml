@@ -13,6 +13,15 @@
     <string name="wind_speed_mu_kmh">%1$s км/ч</string>
     <string name="pressure_mu_hpa">%1$s гПа</string>
     <string name="pressure_mu_mmhg">%1$s мм рт.ст.</string>
+    <string name="feels_like">Ощущается как</string>
+    <string name="morn">утро</string>
+    <string name="day">день</string>
+    <string name="eve">вечер</string>
+    <string name="night">ночь</string>
+    <string name="humidity">Влажность</string>
+    <string name="wind_dir">Направление ветра</string>
+    <string name="sunrise">Восход</string>
+    <string name="sunset">Закат</string>
     <string name="m_s">м/с</string>
     <string name="km_h">км/ч</string>
     <string name="hpa">гПа</string>
