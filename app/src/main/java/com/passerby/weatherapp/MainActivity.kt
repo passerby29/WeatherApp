@@ -28,7 +28,23 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     private val mainPresenter by moxyPresenter { MainPresenter() }
 
     private val geoService by lazy { LocationServices.getFusedLocationProviderClient(this) }
-    private val locationRequest by lazy { initLocationRequest() }
+    private val locationRequest by lazy {
+        LocationRequest.create().apply {
+            interval = 100000
+            fastestInterval = 5000
+            priority = Priority.PRIORITY_HIGH_ACCURACY
+        }
+    }
+    private val geoCallBack = object : LocationCallback() {
+        override fun onLocationResult(geoRes: LocationResult) {
+            Log.d(TAG, "onLocationResult: ${geoRes.locations.size}")
+            for (location in geoRes.locations) {
+                mLocation = location
+                mainPresenter.refresh(mLocation.latitude.toString(), mLocation.longitude.toString())
+                Log.d(TAG, "onLocationResult: lat: ${location.latitude}; ${location.longitude}")
+            }
+        }
+    }
     private lateinit var mLocation: Location
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -169,29 +185,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     override fun setLoading(flag: Boolean) {
         refresh.isRefreshing = flag
     }
-    //-----------------moxy code-----------------
-
-    //-----------------location code-----------------
-
-    private fun initLocationRequest(): LocationRequest {
-        val request = LocationRequest.create()
-        return request.apply {
-            interval = 10000
-            fastestInterval = 5000
-            priority = Priority.PRIORITY_HIGH_ACCURACY
-        }
-    }
-
-    private val geoCallBack = object : LocationCallback() {
-        override fun onLocationResult(geoRes: LocationResult) {
-            Log.d(TAG, "onLocationResult: ${geoRes.locations.size}")
-            for (location in geoRes.locations) {
-                mLocation = location
-                mainPresenter.refresh(mLocation.latitude.toString(), mLocation.longitude.toString())
-                Log.d(TAG, "onLocationResult: lat: ${location.latitude}; ${location.longitude}")
-            }
-        }
-    }
-
-    //-----------------location code-----------------
 }
+//-----------------moxy code-----------------

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.android.material.textview.MaterialTextView
@@ -55,6 +56,12 @@ class MainDailyListAdapter : BaseAdapter<DailyWeatherModel>() {
 
         override fun bindView(position: Int) {
             val itemData = mData[position]
+            val defaultTextColor = date.textColors
+            if (position == 0) {
+                date.setTextColor(ContextCompat.getColor(date.context, R.color.purple_500))
+            } else {
+                date.setTextColor(defaultTextColor)
+            }
 
             container.setOnClickListener {
                 clickListener.showDetails(itemData)
